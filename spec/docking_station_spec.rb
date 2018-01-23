@@ -1,12 +1,12 @@
 require "docking_station"
-require "bike"
 
 describe DockingStation do
+  # Expecting that DockingStation class responds to release_bike method
+  # Create a new variable bike = subject(instatiation of DockingStation class).release_bike
+  # Expecting object bike to works, when calling method working? should returns true
     it { is_expected.to respond_to :release_bike }
-    it { is_expected.to be bike.working?}
-end
-
-
-it "SKJDHKJDSH" do
-  expect(bike(working?))to eq true
+    it "releases a working bike" do
+      bike = subject.release_bike
+      expect(bike).to be_working
+    end
 end
