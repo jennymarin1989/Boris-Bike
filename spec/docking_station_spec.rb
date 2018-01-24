@@ -9,4 +9,17 @@ describe DockingStation do
       bike = subject.release_bike
       expect(bike).to be_working
     end
+    it { is_expected.to respond_to(:dock).with(1).argument}
+    it "can store a bike within a variable" do
+      bike = subject.release_bike
+    expect(subject.dock(bike)).to eq bike
+    end
+
+    it { is_expected.to respond_to :bike }
+
+    it 'Should return bike if available' do
+      bike = subject.release_bike
+      subject.dock(bike)
+      expect(subject.bike).to eq bike
+    end
 end
