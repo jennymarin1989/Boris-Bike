@@ -27,15 +27,13 @@ describe DockingStation do
 
     it { is_expected.to respond_to(:dock).with(1).argument}
 
-    it "can store a bike within a variable" do
+    it "can store a bike " do
       bike = Bike.new
     expect(subject.dock(bike)).to eq bike
     end
 
-    it "raises an error when trying to dock a bike when one bike is already docked" do
-      bike = Bike.new
-      subject.dock(bike)
-      expect{subject.dock(Bike.new)}.to raise_error("Dock is full")
+    it "raises an error when trying to dock a bike when twenty bikes are already docked" do
+      expect{21.times{ subject.dock(Bike.new)}}.to raise_error("Dock is full")
     end
   end
 
@@ -46,4 +44,11 @@ describe DockingStation do
       subject.dock(bike)
       expect(subject.bike).to eq bike
     end
+
+  describe '#initialize' do
+    it "should have a capacity of 20 bikes"do
+    expect{ 20.times{ subject.dock Bike.new }}.to_not raise_error
+    end
+
+  end
 end
