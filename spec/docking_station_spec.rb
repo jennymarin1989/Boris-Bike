@@ -13,9 +13,8 @@ describe DockingStation do
     end
 
     it 'releases a bike' do
-      bike = Bike.new
-      subject.dock(bike)
-      expect(subject.release_bike).to eq bike
+      10.times{subject.dock Bike.new}
+      expect(subject.release_bike).to be_an_instance_of(Bike)
     end
 
     it "raises error when not bike is in the docking station" do

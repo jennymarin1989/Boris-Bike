@@ -13,7 +13,7 @@ class DockingStation
   def release_bike
     # Create a variable = Instantiation of class to be returned
     raise "No bikes available" unless @bike_rack.length > 0
-    @bike
+    @bike_rack.pop
   end
 
   def dock(bike)
