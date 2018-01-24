@@ -6,8 +6,8 @@ class DockingStation
 
   def release_bike
     # Create a variable = Instantiation of class to be returned
-    released_bike = Bike.new
-    return released_bike
+    raise "No bikes available" unless @bike
+    @bike
   end
   def dock(bike)
     @bike = bike
