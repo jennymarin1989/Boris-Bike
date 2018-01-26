@@ -1,4 +1,5 @@
 require "docking_station"
+require "bike"
 
 describe DockingStation do
   # Expecting that DockingStation class responds to release_bike method
@@ -9,6 +10,7 @@ describe DockingStation do
     end
   describe '#release_bike' do
     it { is_expected.to respond_to :release_bike }
+  end
 
     it "releases a working bike" do
       expect(@bike).to be_working
@@ -22,6 +24,12 @@ describe DockingStation do
     it "raises error when not bike is in the docking station" do
       expect{subject.release_bike}.to raise_error("No bikes available")
     end
+
+    it "raises an error when not releasing broken bikes" do
+    broken_bike = Bike.new.report_broken
+    subject.dock(broken_bike)
+    expect{ subject.release_bike}.to raise_error ("No bikes available")
+
   end
 
   describe '#dock' do
@@ -45,8 +53,7 @@ describe DockingStation do
       expect(subject.bike_rack).to eq [@bike]
     end
 
-  describe '#initialize' do
-
+  describe '#initialize' do # Defining itialize method and setting capacity  = default value as an argument
     subject{ DockingStation.new}
     let(:bike) {Bike.new}
     it "should have a default capacity"do

@@ -19,6 +19,9 @@ class DockingStation
     # Create a variable = Instantiation of class to be returned
     raise "No bikes available" if empty?
     @bike_rack.pop
+    raise "No bikes available" if @broken == true
+    @broken
+
   end
 
   def dock(bike)
