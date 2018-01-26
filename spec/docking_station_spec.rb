@@ -2,12 +2,8 @@ require "docking_station"
 
 class DummyBike
 
-  def initialize
-    @broken = false
-  end
-
   def broken?
-    @broken
+    @broken = false
   end
 
   def report_broken
@@ -30,6 +26,7 @@ describe DockingStation do
   # Expecting that DockingStation class responds to release_bike method
   # Create a new variable bike = subject(instatiation of DockingStation class).release_bike
   # Expecting object bike to works, when calling method working? should returns true
+  # blah blah blah
 
   describe '#release_bike' do
     it { is_expected.to respond_to :release_bike }
