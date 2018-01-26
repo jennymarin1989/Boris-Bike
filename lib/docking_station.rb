@@ -11,22 +11,22 @@ class DockingStation
   def initialize(capacity = DEFAULT_CAPACITY)
 
     @bike_rack = []
+    @broken_bikes = []
     @capacity = capacity
 
   end
 
   def release_bike
     # Create a variable = Instantiation of class to be returned
-    raise "No bikes available" if empty?
+    raise "No bikes available" if @bike_rack.empty? && @broken_bikes.empty?
+    raise "No working bikes available" if @bike_rack.empty? && !@broken_bikes.empty?
     @bike_rack.pop
-    raise "No bikes available" if @broken == true
-    @broken
 
   end
 
   def dock(bike)
     raise "Docking Station is full" if full? # same as self.send(:full?)
-    @bike_rack.push(bike)
+    bike.broken? ? @broken_bikes << bike : @bike_rack << bike
   end
 
 private
