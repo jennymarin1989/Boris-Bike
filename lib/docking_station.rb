@@ -6,7 +6,7 @@ class DockingStation
 
   attr_reader :capacity # attribute reader to have access to capacity of bikes in dock station
   attr_reader :bike_rack # attriibute reader to have access to bike_rack variable, can be use a private to have references of bike_rack
-
+  attr_accessor :broken_bikes
 
   def initialize(capacity = DEFAULT_CAPACITY)
 
