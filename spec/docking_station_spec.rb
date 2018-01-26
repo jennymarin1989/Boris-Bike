@@ -32,14 +32,13 @@ describe DockingStation do
     it { is_expected.to respond_to :release_bike }
   end
 
-    it "releases a working bike" do
-      expect(DummyBike.new).to_not be_broken
+    let(:bike) {double :bike}
+    it 'releases a working bike' do
+      allow(bike).to receive(:broken?).and_return(false)
+      subject.dock(bike)
+      expect(subject.release_bike).to eq bike
     end
 
-    it 'releases a bike' do
-      subject.dock(DummyBike.new)
-      expect(subject.release_bike).to be_an_instance_of(DummyBike)
-    end
 
     it "raises error when not bike is in the docking station" do
       expect{subject.release_bike}.to raise_error("No bikes available")
